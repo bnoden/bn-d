@@ -1,0 +1,11 @@
+{
+  "name": "bn-d-000",
+  "author": "bnoden",
+  "private": "true",
+  "dependencies": {
+    "d3": "^5.0.0"
+  },
+  "devDependencies": {
+    "uglify-js": "^3.3.18"
+  }
+}

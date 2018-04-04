@@ -1,0 +1,8 @@
+{
+  "name": "bn-d-01",
+  "author": "bnoden",
+  "private": "true",
+  "dependencies": {
+    "d3": "^5.0.0"
+  }
+}
