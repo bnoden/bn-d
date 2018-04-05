@@ -18274,31 +18274,27 @@ Object.defineProperty(exports, "event", {get: function() { return d3Selection.ev
 },{"d3-array":2,"d3-axis":3,"d3-brush":4,"d3-chord":5,"d3-collection":6,"d3-color":7,"d3-contour":8,"d3-dispatch":9,"d3-drag":10,"d3-dsv":11,"d3-ease":12,"d3-fetch":13,"d3-force":14,"d3-format":15,"d3-geo":16,"d3-hierarchy":17,"d3-interpolate":18,"d3-path":19,"d3-polygon":20,"d3-quadtree":21,"d3-random":22,"d3-scale":24,"d3-scale-chromatic":23,"d3-selection":25,"d3-shape":26,"d3-time":28,"d3-time-format":27,"d3-timer":29,"d3-transition":30,"d3-voronoi":31,"d3-zoom":32}],34:[function(require,module,exports){
 const d3 = require('d3');
 
-module.exports = spec => {
-  const instance = {};
-  let headline, description;
+module.exports = (spec, instance = {}) => {
+  instance.headline = h => {
+    () => !arguments.length && headline;
+    headline = h;
+    return instance;
+  };
+  instance.description = d => {
+    () => !arguments.length && description;
+    description = d;
+    return instance;
+  };
   instance.render = div => {
     div = d3.select('body').append('div');
     div.append('h3').text(headline);
     div
       .attr('class', 'box')
-      .attr('style', 'color:' + spec.color)
+      .attr('style', `color:${spec.color}`)
       .append('p')
       .text(description);
-    return instance; 
-  };
-
-  instance.headline = function(h) {
-    if (!arguments.length) return headline;
-    headline = h;
-    return instance; 
-  };
-  instance.description = function(d) {
-    if (!arguments.length) return description;
-    description = d;
     return instance;
   };
-
   return instance;
 };
 
