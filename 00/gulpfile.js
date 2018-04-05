@@ -15,7 +15,7 @@ gulp.task('bundle', () => {
     .pipe(fs.createWriteStream('dist/bn.d.00.js'));
 });
 
-gulp.task('min', function() {
+gulp.task('min', () => {
   gulp
     .src('dist/bn.d.00.js')
     .pipe(
