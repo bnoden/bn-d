@@ -12,12 +12,12 @@ gulp.task('bundle', () => {
     debug: false
   })
     .bundle()
-    .pipe(fs.createWriteStream('dist/bn.d.00.js'));
+    .pipe(fs.createWriteStream('dist/bundle.js'));
 });
 
 gulp.task('min', () => {
   gulp
-    .src('dist/bn.d.00.js')
+    .src('dist/bundle.js')
     .pipe(
       minify({
         ext: {

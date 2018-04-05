@@ -1,0 +1,9 @@
+.box {
+  max-width: 260px;
+  height: auto;
+  color: #1776B3;
+  margin: 1em;
+  padding: 1em 1em 4em 1em;
+  border: 1.5px solid #2f5d7a;
+  text-align: center;
+}

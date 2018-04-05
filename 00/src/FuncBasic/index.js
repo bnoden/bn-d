@@ -1,6 +1,8 @@
 const d3 = require('d3');
 
-module.exports = (spec, instance = {}) => {
+module.exports = element => {
+  const instance = {};
+
   instance.headline = h => {
     () => !arguments.length && headline;
     headline = h;
@@ -16,10 +18,11 @@ module.exports = (spec, instance = {}) => {
     div.append('h3').text(headline);
     div
       .attr('class', 'box')
-      .attr('style', `color:${spec.color}`)
+      .attr('style', `color:${element.color}`)
       .append('p')
       .text(description);
     return instance;
   };
+
   return instance;
 };
