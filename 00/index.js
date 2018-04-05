@@ -1,5 +1,5 @@
 const fb = require('./src/FuncBasic');
-const box = require('./src/Box');
+// const box = require('./src/Box');
 
 const colorDefault = '#1776B3';
 
