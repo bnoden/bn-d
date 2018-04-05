@@ -17,7 +17,7 @@ module.exports = element => {
     div = d3.select('body').append('div');
     div.append('h3').text(headline);
     div
-      .attr('class', 'box')
+      .classed('box', 1)
       .attr('style', `color:${element.color}`)
       .append('p')
       .text(description);

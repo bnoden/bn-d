@@ -7525,17 +7525,18 @@ function extend() {
 }
 
 },{}],39:[function(require,module,exports){
-const fb = require('./src/FuncBasic');
-const box = require('./src/Box');
+const { dateTime, funcBasic } = require('./src');
 
 const colorDefault = '#1776B3';
 
-fb({ color: colorDefault })
+dateTime('#date');
+
+funcBasic({ color: colorDefault })
   .headline('Func Basic')
   .description('You are in func-basic module bn-d-00')
   .render();
-  
-},{"./src/Box":72,"./src/FuncBasic":73}],40:[function(require,module,exports){
+
+},{"./src":74}],40:[function(require,module,exports){
 // https://d3js.org/d3-array/ Version 1.2.1. Copyright 2017 Mike Bostock.
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -25784,23 +25785,24 @@ exports.XMLHttpRequest = function() {
 
 }).call(this,require('_process'),require("buffer").Buffer)
 },{"_process":14,"buffer":4,"child_process":1,"fs":1,"http":29,"https":8,"url":35}],72:[function(require,module,exports){
-// const d3 = require('d3');
-// 
-// module.exports = (
-//   w = '4px',
-//   s = 'solid',
-//   c = '#2F5D7A',
-//   box = Object.assign({}, w, s, c)
-// ) => {
-//   box.render = boxes => {
-//     boxes = d3.select('body').selectAll('.box');
-//     boxes.attr('style', `border:${box.w} ${box.s} ${box.c}`);
-//     return box;
-//   };
-//   return box;
-// };
+const d3 = require('d3');
 
-},{}],73:[function(require,module,exports){
+module.exports = (d, color = '#B0CDD6') => {
+  let duration = 0.001;
+  setInterval((date = new Date(), datetime) => {
+    datetime = date
+      .toLocaleString()
+      .split(', ')
+      .join(' | ');
+    d3
+      .select(d)
+      .text(datetime)
+      .attr('style', `color:${color}`);
+    duration = 100;
+  }, duration);
+};
+
+},{"d3":70}],73:[function(require,module,exports){
 const d3 = require('d3');
 
 module.exports = element => {
@@ -25820,7 +25822,7 @@ module.exports = element => {
     div = d3.select('body').append('div');
     div.append('h3').text(headline);
     div
-      .attr('class', 'box')
+      .classed('box', 1)
       .attr('style', `color:${element.color}`)
       .append('p')
       .text(description);
@@ -25830,4 +25832,10 @@ module.exports = element => {
   return instance;
 };
 
-},{"d3":70}]},{},[39]);
+},{"d3":70}],74:[function(require,module,exports){
+const funcBasic = require('./FuncBasic');
+const dateTime = require('./DateTime');
+
+module.exports = { dateTime, funcBasic };
+
+},{"./DateTime":72,"./FuncBasic":73}]},{},[39]);
